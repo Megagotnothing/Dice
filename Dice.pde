@@ -1,9 +1,11 @@
 int x = 50;
 int y = 50;
 int nice = 1;
+int sum = 0;
+
 void setup()
 {	
-	size(500,500);
+	size(500,600);
 	frameRate(200);
 	background(200);
 }
@@ -21,10 +23,21 @@ void draw()
 		}
 		x += 50;
 	}
-	
+	if(y > 500)
+		{
+			noLoop();
+		}
+	sum += ok.diceDots;
+	textSize(24);
+	fill(200);
+	noStroke();
+	rect(200,500,500,100);
+	fill(255);
+	text("Dots of all rolls: " + sum,100,550);
 }
 void mousePressed()
 {
+	loop();
 	redraw();
 	background(200);
 	x = 50;
@@ -32,6 +45,7 @@ void mousePressed()
 	nice += 1;
 	if(nice > 6)
 		nice = 1;
+	sum = 0;
 }
 class Die //models one single dice cube
 {
@@ -49,8 +63,8 @@ class Die //models one single dice cube
 	}
 	void show()
 	{	
-		int[] col = {(int)(Math.random()*255+ 80),(int)(Math.random()*255 + 80),(int)(Math.random()*255 + 80)};
-		int[] col2 = {(int)(Math.random()*255-80),(int)(Math.random()*255-80),(int)(Math.random()*255-80)};
+		int[] col = {(int)(Math.random()*255+ 100),(int)(Math.random()*255 + 200),(int)(Math.random()*255 + 100)};
+		int[] col2 = {(int)(Math.random()*255-100),(int)(Math.random()*255-100),(int)(Math.random()*255-100)};
 
 		fill(col[0],col[1],col[2]);
 		rect(myX,myY, 50,50,10);
